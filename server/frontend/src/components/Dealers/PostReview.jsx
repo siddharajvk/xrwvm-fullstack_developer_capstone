@@ -102,13 +102,24 @@ const PostReview = () => {
       <div className='input_field'>
       Car Make 
       <select name="cars" id="cars" onChange={(e) => setModel(e.target.value)}>
-      <option value="" selected disabled hidden>Choose Car Make and Model</option>
-      {carmodels.map(carmodel => (
-          <option value={carmodel.CarMake+" "+carmodel.CarModel}>{carmodel.CarMake} {carmodel.CarModel}</option>
-      ))}
-      </select>        
-      </div >
-
+        <option value="" disabled hidden>Choose Car Make and Model</option>
+        <option value='NISSAN Pathfinder'>NISSAN Pathfinder</option>
+        <option value='NISSAN Qashqai'>NISSAN Qashqai</option>
+        <option value='NISSAN XTRAIL'>NISSAN XTRAIL</option>
+        <option value='Mercedes A-Class'>Mercedes A-Class</option>
+        <option value='Mercedes C-Class'>Mercedes C-Class</option>
+        <option value='Mercedes E-Class'>Mercedes E-Class</option>
+        <option value='Audi A4'>Audi A4</option>
+        <option value='Audi A5'>Audi A5</option>
+        <option value='Audi A6'>Audi A6</option>
+        <option value='Kia Sorrento'>Kia Sorrento</option>
+        <option value='Kia Carnival'>Kia Carnival</option>
+        <option value='Kia Cerato'>Kia Cerato</option>
+        <option value='Toyota Corolla'>Toyota Corolla</option>
+        <option value='Toyota Camry'>Toyota Camry</option>
+        <option value='Toyota Kluger'>Toyota Kluger</option>
+      </select>
+    </div>
       <div className='input_field'>
       Car Year <input type="int" onChange={(e) => setYear(e.target.value)} max={2023} min={2015}/>
       </div>
