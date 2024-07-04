@@ -16,21 +16,17 @@ logger = logging.getLogger(__name__)
 
 @csrf_exempt
 def login_user(request):
-    # Get username and password from request.POST dictionary
     data = json.loads(request.body)
     username = data['userName']
     password = data['password']
-    # Try to check if provided credentials can be authenticated
     user = authenticate(username=username, password=password)
     data = {"userName": username}
     if user is not None:
-        # If user is valid, call login method to login current user
         login(request, user)
         data = {"userName": username, "status": "Authenticated"}
     return JsonResponse(data)
 
 
-# Create a `logout_request` view to handle sign out request
 def logout_request(request):
     logout(request)
     data = {"userName": ""}
@@ -117,7 +113,7 @@ def add_review(request):
             return JsonResponse({"status": 200})
         except Exception as e:
             print(e)
-            return JsonResponse({"status": 401, 
+            return JsonResponse({"status": 401,
             "message": "Error in posting review"})
     else:
         return JsonResponse({"status": 403, "message": "Unauthorized"})
@@ -131,6 +127,7 @@ def get_cars(request):
     car_models = CarModel.objects.select_related('car_make')
     cars = []
     for car_model in car_models:
-        cars.append({"CarModel": car_model.name, 
+        cars.append({"CarModel": car_model.name,
         "CarMake": car_model.car_make.name})
+
     return JsonResponse({"CarModels": cars})
